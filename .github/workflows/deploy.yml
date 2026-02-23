@@ -5,7 +5,7 @@ name: Deploy TaskEngine to Azure Linux
 on:
   push:
     branches:
-      - main # Se ejecuta cada vez que subas cambios a la rama 'main'
+      - master # Se ejecuta cada vez que subas cambios a la rama 'main'
 
 jobs:
   build-and-deploy:
