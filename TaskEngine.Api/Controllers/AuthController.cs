@@ -5,6 +5,7 @@ using TaskEngine.Domain.Interfaces;
 
 namespace TaskEngine.Api.Controllers;
 
+[ApiController]
 public class AuthController : ControllerBase
 {
     private readonly IJwtServiceRepository _jwtServiceRepository;
@@ -16,6 +17,7 @@ public class AuthController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("Login")]
+    
     public async Task<ActionResult<LoginResponseModel>> Login(LoginRequestModel request)
     {
         var result = await _jwtServiceRepository.Authenticate(request);
