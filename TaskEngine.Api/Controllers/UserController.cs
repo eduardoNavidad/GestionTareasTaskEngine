@@ -21,11 +21,11 @@ public class UserController : ControllerBase
 
     [HttpPost]
     public async Task<IActionResult> Create(CreateUserCommand command)
-    { 
+    {
         var result = await _mediator.Send(command);
         return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<ActionResult<UserDto>> GetById(int id)
     {
         var result = await _mediator.Send(new GetUserByIdCommand(id));
