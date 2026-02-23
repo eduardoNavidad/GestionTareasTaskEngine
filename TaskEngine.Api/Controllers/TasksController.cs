@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using TaskEngine.Application.DTOs;
@@ -7,6 +8,7 @@ using TaskEngine.Application.Tasks.Queries.GetTaskById;
 
 namespace TaskEngine.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class TasksController : Controller

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using TaskEngine.Application.Categories.Commands.CreateCategory;
@@ -7,6 +8,7 @@ using TaskEngine.Application.DTOs;
 
 namespace TaskEngine.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class CategoriesController : ControllerBase

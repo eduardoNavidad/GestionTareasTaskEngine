@@ -34,7 +34,7 @@ namespace TaskEngine.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("TaskEngine.Domain.Entities.TaskItem", b =>
@@ -64,7 +64,7 @@ namespace TaskEngine.Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("TaskItems");
+                    b.ToTable("TaskItems", (string)null);
                 });
 
             modelBuilder.Entity("TaskEngine.Domain.Entities.TaskItem", b =>

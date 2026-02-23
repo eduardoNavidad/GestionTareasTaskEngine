@@ -18,7 +18,7 @@ public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, Cate
     }
     
     public async Task<CategoryDto> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
-    {
+    {   
         var category = _mapper.Map<Category>(request);
 
         await _categoryRepository.AddAsync(category);

@@ -2,6 +2,7 @@
 using TaskEngine.Application.Categories.Commands.CreateCategory;
 using TaskEngine.Application.DTOs;
 using TaskEngine.Application.Tasks.Commands.CreateTask;
+using TaskEngine.Application.Users.Commands.CreateUser;
 using TaskEngine.Domain.Entities;
 
 namespace TaskEngine.Application.Mappings;
@@ -27,5 +28,13 @@ public class MappingProfile : Profile
         CreateMap<Category, CategoryDto>().ReverseMap();
 
         CreateMap<CreateCategoryCommand, Category>();
+
+        // Para User
+
+        CreateMap<User, UserDto>().ReverseMap();
+
+        CreateMap<CreateUserCommand, User>();
+
+
     }
 }
