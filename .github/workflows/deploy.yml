@@ -33,8 +33,10 @@ jobs:
 
       # 5. Publica el proyecto (crea la carpeta lista para subir a producción)
       # El parámetro -o indica que los archivos irán a la carpeta './publish'
+      # 5. Publicar SOLAMENTE el proyecto API
       - name: Publicar app
-        run: dotnet publish -c Release -o ./publish
+        # Cambia '.' por la ruta al archivo .csproj de tu API
+        run: dotnet publish TaskEngine.Api/TaskEngine.Api.csproj -c Release -o ./publish
 
       # 6. Despliega los archivos publicados a Azure App Service
       - name: Desplegar a Azure Web App
