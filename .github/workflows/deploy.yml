@@ -41,7 +41,7 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           # Nombre exacto de tu App Service en Azure
-          app-name: 'ASP-ENavidad-bde4'
+          app-name: 'api-eduardo-sv'
           # Usa el secreto que guardamos en GitHub Settings
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           # Carpeta que vamos a subir
