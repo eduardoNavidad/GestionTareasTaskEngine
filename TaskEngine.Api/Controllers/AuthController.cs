@@ -6,6 +6,7 @@ using TaskEngine.Domain.Interfaces;
 namespace TaskEngine.Api.Controllers;
 
 [ApiController]
+[Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
     private readonly IJwtServiceRepository _jwtServiceRepository;
