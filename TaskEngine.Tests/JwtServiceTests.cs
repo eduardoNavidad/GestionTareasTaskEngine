@@ -11,7 +11,7 @@ namespace TaskEngine.Tests
         {
             // Arrange: Agregamos el '?' después de string para que coincida con lo que espera .NET
             var myConfiguration = new Dictionary<string, string?> {
-                {"JwtConfig:Key", "123"}
+                {"JwtConfig:Key", "8ioKNu1pTS6f8gb3Tg7WGyJbylaf2yF4"}
             };
 
             var configuration = new ConfigurationBuilder()
