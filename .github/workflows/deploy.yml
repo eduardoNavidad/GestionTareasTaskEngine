@@ -5,7 +5,11 @@ name: Deploy TaskEngine to Azure Linux
 on:
   push:
     branches:
-      - master # Se ejecuta cada vez que subas cambios a la rama 'master'
+      - master
+      - Testing
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build-and-deploy:
@@ -27,8 +31,8 @@ jobs:
       - name: Restaurar dependencias
         run: dotnet restore
 
-      # 4. EJECUTAR TESTS UNITARIOS 
-      # Este paso es el "filtro". Si el test falla, el deploy se cancela automáticamente.
+      # 4. EJECUTAR TESTS UNITARIOS 🛡️
+      # Este paso corre siempre (en Testing y en master). Si falla, detiene todo.
       - name: Ejecutar Tests
         run: dotnet test --no-restore --verbosity normal
 
@@ -40,8 +44,10 @@ jobs:
       - name: Publicar app
         run: dotnet publish TaskEngine.Api/TaskEngine.Api.csproj -c Release -o ./publish
 
-      # 7. Despliega los archivos publicados a Azure App Service
+      # 7. Desplegar a Azure Web App (CONDICIONAL) 🚀
+      # La línea 'if' asegura que SOLO si el cambio es en 'master' se suba a Azure.
       - name: Desplegar a Azure Web App
+        if: github.ref == 'refs/heads/master'
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'api-eduardo-sv'
