@@ -23,7 +23,7 @@ namespace TaskEngine.Tests
 
             // Assert
             Assert.NotNull(key);
-            Assert.True(key.Length >= 32, "La clave JWT debe tener al menos 32 caracteres.");
+            Assert.True(key.Length >= 32);
         }
     }
 }
