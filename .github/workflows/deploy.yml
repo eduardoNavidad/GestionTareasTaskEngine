@@ -5,7 +5,7 @@ name: Deploy TaskEngine to Azure Linux
 on:
   push:
     branches:
-      - master # Se ejecuta cada vez que subas cambios a la rama 'main'
+      - master # Se ejecuta cada vez que subas cambios a la rama 'master'
 
 jobs:
   build-and-deploy:
@@ -21,30 +21,29 @@ jobs:
       - name: Configurar .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x' # Cambia a 6.0.x o 7.0.x si usas otra versión
+          dotnet-version: '8.0.x'
 
       # 3. Restaura las librerías de NuGet
       - name: Restaurar dependencias
         run: dotnet restore
 
-      # 4. Compila el proyecto en modo 'Release' (optimizado)
+      # 4. EJECUTAR TESTS UNITARIOS 
+      # Este paso es el "filtro". Si el test falla, el deploy se cancela automáticamente.
+      - name: Ejecutar Tests
+        run: dotnet test --no-restore --verbosity normal
+
+      # 5. Compila el proyecto en modo 'Release'
       - name: Compilar
         run: dotnet build --no-restore --configuration Release
 
-      # 5. Publica el proyecto (crea la carpeta lista para subir a producción)
-      # El parámetro -o indica que los archivos irán a la carpeta './publish'
-      # 5. Publicar SOLAMENTE el proyecto API
+      # 6. Publicar SOLAMENTE el proyecto API
       - name: Publicar app
-        # Cambia '.' por la ruta al archivo .csproj de tu API
         run: dotnet publish TaskEngine.Api/TaskEngine.Api.csproj -c Release -o ./publish
 
-      # 6. Despliega los archivos publicados a Azure App Service
+      # 7. Despliega los archivos publicados a Azure App Service
       - name: Desplegar a Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          # Nombre exacto de tu App Service en Azure
           app-name: 'api-eduardo-sv'
-          # Usa el secreto que guardamos en GitHub Settings
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          # Carpeta que vamos a subir
           package: ./publish

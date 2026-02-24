@@ -1,0 +1,65 @@
+[33mcommit acef77e43526687ecf642325e2756ed69d274243[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 17:48:51 2026 -0600
+
+    Se hace mejor en el endpoint de User GetById
+
+[33mcommit ceea8d837d5d7f33b36ba0012600f39511045f83[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 16:03:49 2026 -0600
+
+    Se hacer mejor en el login
+
+[33mcommit 368f1a67537ffd373072eb43bc881ed7d0f9e16c[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 15:52:07 2026 -0600
+
+    Se agreega mejora
+
+[33mcommit 691f4e350d142dd80d6c6b632f9f1741c043482f[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 15:49:06 2026 -0600
+
+    Se corrige el login controller
+
+[33mcommit 71219af277c8d6b276fc7918597ebec6c90938dd[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 15:30:17 2026 -0600
+
+    Se corrige para que corra nada mas la api y no todo el proyecto
+
+[33mcommit 1671631926c488fdb437d9c4224e3f24e706b1dd[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 15:18:38 2026 -0600
+
+    Se corrige el nombre del proyecto en Azure
+
+[33mcommit a8d3f096fe2dd169d309e8a38e6d2e2ba297bd97[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 15:02:21 2026 -0600
+
+    Se corrige la rama en el archivo yml
+
+[33mcommit 71e84d26fe0b01b612cb10e962a1332a9410c962[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 14:59:42 2026 -0600
+
+    Se agrega archivo GitHubAction
+
+[33mcommit 1da135d218bfe05c478d2d0cdf30437468448209[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Mon Feb 23 14:14:00 2026 -0600
+
+    Se agreega la autenticacion con JWT
+
+[33mcommit e8a1c9c6e4e72b8e8d5e328c56cb00b426d25c60[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Fri Feb 20 16:13:46 2026 -0600
+
+    Agregar README.md.
+
+[33mcommit 04219ac17513e31f6eb934e1f0694da3c01bee94[m
+Author: eduardoNavidad <navigava1@gmail.com>
+Date:   Fri Feb 20 16:11:10 2026 -0600
+
+    Se suben la estructura completa com Mapper y Dtos
