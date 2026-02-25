@@ -2,12 +2,8 @@
 
 namespace TaskEngine.Domain.Interfaces
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IRepository<Category,Guid>
     {
-        Task <IEnumerable<Category>> GetAllAsync();
-
-        Task<Category?> GetByIdAsync(Guid id);
-
-        Task AddAsync(Category category);
+        
     }
 }

@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using TaskEngine.Application.Categories.Commands.CreateCategory;
+using TaskEngine.Application.Categories.Commands.UpdateCategory;
 using TaskEngine.Application.DTOs;
 using TaskEngine.Application.Tasks.Commands.CreateTask;
+using TaskEngine.Application.Tasks.Commands.UpdateTask;
 using TaskEngine.Application.Users.Commands.CreateUser;
+using TaskEngine.Application.Users.Commands.UpdateUser;
 using TaskEngine.Domain.Entities;
 
 namespace TaskEngine.Application.Mappings;
@@ -25,15 +28,25 @@ public class MappingProfile : Profile
 
         CreateMap<CreateTaskCommand, TaskItem>();
 
+        CreateMap<TaskUpdateDto, TaskItem>();
+
+        CreateMap<UpdateTaskCommand, TaskItem>();
+
+        //Category
+
         CreateMap<Category, CategoryDto>().ReverseMap();
 
         CreateMap<CreateCategoryCommand, Category>();
+
+        CreateMap<UpdateCategoryCommand, Category>();
 
         // Para User
 
         CreateMap<User, UserDto>().ReverseMap();
 
         CreateMap<CreateUserCommand, User>();
+
+        CreateMap<UpdateUserCommand, User>();
 
 
     }

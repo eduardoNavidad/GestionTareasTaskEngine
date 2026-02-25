@@ -2,9 +2,7 @@
 
 namespace TaskEngine.Domain.Interfaces;
 
-public interface IUserRepository
+public interface IUserRepository : IRepository<User,int>
 {
-    Task<IEnumerable<User>> GetAllAsync();
-    Task<User?> GetByIdAsync(int id);
-    Task AddAsync(User users);
+
 }

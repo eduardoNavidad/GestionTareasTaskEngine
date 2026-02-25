@@ -3,4 +3,5 @@
   <Project Path="TaskEngine.Application/TaskEngine.Application.csproj" />
   <Project Path="TaskEngine.Domain/TaskEngine.Domain.csproj" />
   <Project Path="TaskEngine.Infrastructure/TaskEngine.Infrastructure.csproj" />
+  <Project Path="TaskEngine.Tests/TaskEngine.Tests.csproj" Id="78881572-69bd-446e-824e-f2e584258840" />
 </Solution>
