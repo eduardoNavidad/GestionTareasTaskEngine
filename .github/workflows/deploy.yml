@@ -4,12 +4,9 @@ name: Deploy TaskEngine to Azure Linux
 # Define cuándo se dispara el proceso
 on:
   push:
-    branches:
-      - master
-      - Testing
+    branches: [ "master", "Testing" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "master" ]
 
 jobs:
   build-and-deploy:

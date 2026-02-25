@@ -1,9 +1,10 @@
-﻿using Moq;
-using Xunit;
-using AutoMapper;
+﻿using AutoMapper;
+using Moq;
+using TaskEngine.Application.DTOs;
 using TaskEngine.Application.Tasks.Commands.UpdateTask;
-using TaskEngine.Domain.Interfaces;
 using TaskEngine.Domain.Entities;
+using TaskEngine.Domain.Interfaces;
+using Xunit;
 
 namespace TaskEngine.Tests.Tasks.Commands;
 
@@ -25,9 +26,9 @@ public class UpdateTaskHandlerTests
     }
 
     [Fact]
-public async System.Threading.Tasks.Task Update_ShouldReturnTaskDto_WhenEverythingIsOk()
+    public async System.Threading.Tasks.Task Update_ShouldReturnTaskDto_WhenEverythingIsOk()
     {
-        // ARRANGE
+        // Arrange
         var taskId = Guid.NewGuid();
         var categoryId = Guid.NewGuid();
         var command = new UpdateTaskCommand(taskId, "Nuevo", "Desc", true, categoryId);
@@ -35,17 +36,25 @@ public async System.Threading.Tasks.Task Update_ShouldReturnTaskDto_WhenEverythi
         var existingTask = new TaskItem { Id = taskId };
         var existingCategory = new Category { Id = categoryId };
 
+        // Mocks de repositorios
         _taskRepoMock.Setup(r => r.GetByIdAsync(taskId)).ReturnsAsync(existingTask);
         _categoryRepoMock.Setup(r => r.GetByIdAsync(categoryId)).ReturnsAsync(existingCategory);
 
-        // Aquí es donde daba error: especificamos el retorno explícitamente si es necesario
+        // Forzamos el retorno para evitar conflictos de nombres
         _taskRepoMock.Setup(r => r.UpdateAsync(It.IsAny<TaskItem>()))
-                     .Returns(System.Threading.Tasks.Task.FromResult(1)); // Usamos Returns en lugar de ReturnsAsync para evitar el conflicto del nombre Task
+                     .Returns(System.Threading.Tasks.Task.FromResult(1));
 
-        // ACT
+        // Fix: Usamos el constructor del TaskDto con todos sus parámetros
+        var taskDtoMock = new TaskDto(taskId, "Tarea Actualizada", "Desc", DateTime.Now, true, categoryId, "Categoría");
+
+        _mapperMock.Setup(m => m.Map<TaskDto>(It.IsAny<object>()))
+                   .Returns(taskDtoMock);
+
+        // Act
         var result = await _handler.Handle(command, CancellationToken.None);
 
-        // ASSERT
+        // Assert
         Assert.NotNull(result);
+        Assert.Equal(taskId, result.Id);
     }
 }
