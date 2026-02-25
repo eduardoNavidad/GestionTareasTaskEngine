@@ -31,14 +31,14 @@ jobs:
       - name: Restaurar dependencias
         run: dotnet restore
 
-      # 4. EJECUTAR TESTS UNITARIOS 🛡️
-      # Este paso corre siempre (en Testing y en master). Si falla, detiene todo.
-      - name: Ejecutar Tests
-        run: dotnet test --no-restore --verbosity normal
-
-      # 5. Compila el proyecto en modo 'Release'
+      # 4. Compila la solución completa en modo 'Release'
       - name: Compilar
         run: dotnet build --no-restore --configuration Release
+
+      # 5. EJECUTAR TESTS UNITARIOS 🛡️
+      # Usamos --no-build para usar lo que compilamos en el paso anterior
+      - name: Ejecutar Tests
+        run: dotnet test --no-build --configuration Release --verbosity normal
 
       # 6. Publicar SOLAMENTE el proyecto API
       - name: Publicar app
