@@ -24,7 +24,7 @@ public class UpdateTaskHandlerTests
         _handler = new UpdateTaskHandler(_taskRepoMock.Object, _mapperMock.Object, _categoryRepoMock.Object);
     }
 
-    Fact]
+    [Fact]
 public async System.Threading.Tasks.Task Update_ShouldReturnTaskDto_WhenEverythingIsOk()
     {
         // ARRANGE
