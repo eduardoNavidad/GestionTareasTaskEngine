@@ -2,10 +2,8 @@
 
 namespace TaskEngine.Domain.Interfaces
 {
-    public interface ITaskRepository
+    public interface ITaskRepository : IRepository<TaskItem,Guid>
     {
-        Task<IEnumerable<TaskItem>> GetAllAsync();
-        Task<TaskItem?> GetByIdAsync(Guid id);
-        Task AddAsync(TaskItem taskItem);
+
     }
 }
